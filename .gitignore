@@ -51,6 +51,9 @@ Thumbs.db
 # App Generated Files #
 #######################
 lib/impact/*
+!lib/impact/empty
 lib/weltmeister/*
+!lib/weltmeister/empty
 tools/*
+!tools/empty
 weltmeister.html

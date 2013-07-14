@@ -68,10 +68,13 @@
     </div>
 </body>
 <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="dialogdata.js"></script>
 <script>
     var wordEl = $('#word #selection');
     var trayEl = $('#tray');
+    var dialogsLaunched = {};
 
+    // Main Program
     $(function() {
 
 
@@ -89,6 +92,24 @@
                     $(this).remove();
                 });
             });
+
+        });
+
+        $('#main').on('dialog', function(e, dialogId){
+            if ( ! dialogData.hasOwnProperty(dialogId) || dialogsLaunched.hasOwnProperty(dialogId) ) {
+                return;
+            }
+
+            console.log('dialog', dialogId, dialogData[dialogId]);
+
+            dialogsLaunched[dialogId] = true;
+
+            var scene = dialogData[dialogId];
+            for (var i = 0; i < scene.length; i++) {
+                var speech = scene[i];
+
+                $('#'+speech.character).html();
+            }
 
         });
 

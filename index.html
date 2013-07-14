@@ -45,20 +45,21 @@
         </div>
         <div id="inventory">
         </div>
+        <div id="game"></div>
         <div id="dialog">
-            <table width='100%'>
+            <table width='540'>
                 <tr>
-                    <td>
+                    <td width="50">
                         Penny<br />
                         <img src="http://placekitten.com/30/30" />
                     </td>
-                    <td>
-                        <div id="penny">...</div>
+                    <td width="220">
+                        <div id="penny"></div>
                     </td>
-                    <td>
-                        <div id="mum">...</div>
+                    <td width="220">
+                        <div id="mum"></div>
                     </td>
-                    <td>
+                    <td width="50">
                         Mum<br />
                         <img src="http://placekitten.com/30/30" />
                     </td>
@@ -105,15 +106,32 @@
             dialogsLaunched[dialogId] = true;
 
             var scene = dialogData[dialogId];
-            for (var i = 0; i < scene.length; i++) {
-                var speech = scene[i];
 
-                $('#'+speech.character).html();
-            }
+            var i = 0;
+            var speech = scene[i];
+            addSpeech(speech, i, scene);
 
         });
 
     });
+
+    function addSpeech(speech, i, scene) {
+        console.log('speech', speech.dialog);
+        var dataEl = '<div id="speech-'+speech.character+'" class="speech">'+speech.dialog+'</div>';
+
+        console.log(i, speech.character);
+        $('#'+speech.character).append(dataEl);
+        $('#speech-'+speech.character).fadeOut(speech.delay, function(){
+            $('#'+speech.character).html('');
+            i++;
+            if (i >= scene.length) {
+                return;
+            }
+
+            speech = scene[i];
+            addSpeech(speech, i, scene);
+        });
+    }
 
     function removeLetterObtained(el) {
         var letterRemove = $(el).text();

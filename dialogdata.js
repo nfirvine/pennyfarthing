@@ -340,4 +340,15 @@ var dialogData =  {
         },
     ],
 
+    killedwitch: [
+        {
+            dialog: 'But then I grabbed all the cookies from my pack, and I ate and ate and ate them until I couldn\'t eat any more. Then I said...',
+            emotion: null,
+            character: 'penny',
+            sound: 'final_forest_intro_02_penny_lots_of_trees.wav',
+            sound_description: null,
+            delay: 12000
+        },
+    ],
+
 };

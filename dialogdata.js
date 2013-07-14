@@ -20,6 +20,44 @@ var dialogData =  {
         },
     ],
 
+    firstpickup : [
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'And then I found these little magic letters and things, and I thought, I thought, maybe they\'ll give me an idea of how to get home!',
+            sound: null,
+            sound_description: null,
+            delay: 4000
+        },
+        {
+            character: 'game',
+            emotion: null,
+            dialog: 'Collect letters, then try putting them together in words that can help you.',
+            sound: null,
+            sound_description: null,
+            delay: 4000
+        },
+    ],
+
+    firsttouchbush : [
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'I looked everywhere for ideas of how to get home safe... up high and down low... even in some of the berry bushes!',
+            sound: null,
+            sound_description: null,
+            delay: 2500
+        },
+        {
+            character: 'game',
+            emotion: null,
+            dialog: 'Press S to search your surroundings for more letters.',
+            sound: null,
+            sound_description: null,
+            delay: 3000
+        },
+    ],
+
     // First view of dog
     meetdog: [
         {
@@ -100,10 +138,154 @@ var dialogData =  {
         {
             character: 'mum',
             emotion: null,
-            dialog: 'All right, that's it. No more Warner Brother cartoons before bedtime',
+            dialog: 'All right, that\'s it. No more Warner Brother cartoons before bedtime',
             sound: null,
             sound_description: null,
             delay: 2000
+        },
+    ],
+
+    dogboss: [
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'And then... duh duh DUH!!!!',
+            sound: null,
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'It was the biggest, meanest, nastiest, scariest dog in the whole wide world!',
+            sound: null,
+            sound_description: 'cute yapping',
+            delay: 2000
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: '*ahem* I said, it was the biggest, meanest, nastiest scariest dog in the whole wide world!',
+            sound: null,
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'It was big, big, big...',
+            sound: null,
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            character: 'mum',
+            emotion: null,
+            dialog: 'How big was it?',
+            sound: null,
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'It was bigger than the moon! It was bigger than the biggest thing in the world!',
+            sound: null,
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 't was so big I couldn\'t jump over it or run around it or even use my taser because if I tried it then it would laugh at me and then eat me.',
+            sound: null,
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            character: 'penny',
+            emotion: 'matter of fact',
+            dialog: 'I didn\'t want to be eaten. I\'d be late for bed if that happened',
+            sound: null,
+            sound_description: null,
+            delay: 2000
+        },
+    ],
+
+    killeddog: [
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'And so! And so! I took a bone, a really big white bone, and I threw it as hard as I could!',
+            sound: null,
+            sound_description: null,
+            delay: 2500
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'And the dog chased it because he was hungry, so he went away and let me alone, and then I wasn\'t scared anymore because he went away.',
+            sound: null,
+            sound_description: null,
+            delay: 2500
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'Hooray',
+            sound: null,
+            sound_description: null,
+            delay: 3000
+        },
+    ],
+
+    meetboy: [
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'And then, after that, there was a boy.',
+            sound: null,
+            sound_description: null,
+            delay: 2500
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'But he was dumb',
+            sound: null,
+            sound_description: null,
+            delay: 2500
+        },
+    ],
+
+
+    foreststart: [
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'So after the dog and the stupid boy went away, I got lost in the forest.',
+            sound: null,
+            sound_description: 'Forest sounds, crickets, even rainforest sounds to make it sound more "dangerous"',
+            delay: 2500
+        },
+        {
+            dialog: 'It was a really deep and dark forest, with lots and lots and LOTS of trees. More trees than were in the whole rest of the world. There were so many trees that even I couldn\'t count them all in a hundred million years!',
+            emotion: null,
+            character: 'penny',
+            sound: null,
+            sound_description: null,
+            delay: 2500
+        },
+    ],
+
+    meetdeer: [
+        {
+            dialog: 'And in the forest, there were... there were, uh, big deer! But not like in the cartoons. These were, like, nasty, angry deer. They had big spiky antlers and just kept running and running and running until... um, I dunno, until their moms called them in for dinner, maybe.',
+            emotion: null,
+            character: 'penny',
+            sound: null,
+            sound_description: null,
+            delay: 4500
         },
     ],
 

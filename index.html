@@ -11,6 +11,10 @@
 			padding: 0;
 			font-size: 12pt;
 		}
+
+        #main {
+            width: 720px;
+        }
 		
 		#canvas {
 			/*position: absolute;*/
@@ -23,22 +27,34 @@
 
         .letter-obtained,
         .letter-selected {
-            padding: 10px;
+            padding: 30px;
         }
 
         .letter-obtained:hover,
         .letter-selected:hover {
             cursor: pointer;
         }
+
+        #game {
+            text-align: center;
+        }
+
+        .tray {
+            margin: 0 80px;
+        }
+
+        #dialog td {
+            vertical-align: top;
+        }
 	</style>
 
 </head>
 <body>
     <div id="main">
-        <div id="tray"></div>
+        <div id="tray"class="tray"></div>
 	    <canvas id="canvas"></canvas>
         <div id="word">
-            <div id="selection">
+            <div id="selection" class="tray">
 
             </div>
             <button name="check" onclick="checkAnswer()">Check</button>
@@ -49,17 +65,17 @@
         <div id="dialog">
             <table width='540'>
                 <tr>
-                    <td width="50">
+                    <td width="50" valign="top">
                         Penny<br />
                         <img src="http://placekitten.com/30/30" />
                     </td>
-                    <td width="220">
+                    <td width="220" valign="top">
                         <div id="penny"></div>
                     </td>
-                    <td width="220">
+                    <td width="220" valign="top">
                         <div id="mum"></div>
                     </td>
-                    <td width="50">
+                    <td width="50" valign="top">
                         Mum<br />
                         <img src="http://placekitten.com/30/30" />
                     </td>
@@ -78,10 +94,10 @@
     // Main Program
     $(function() {
 
-
+        console.log('dialogData', dialogData);
         $('#main').on('letter-obtain', function(e, letter){
-            console.log('letter obtaned!!');
-            console.log('I got ', letter);
+
+            $('#main').trigger('dialog', ['firstpickup']);
 
             trayEl.append('<span class="letter-obtained">'+letter+'</span>');
 

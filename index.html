@@ -188,12 +188,14 @@
     function useItem() {
         $('#use').hide();
         itemEl.html('');
+        $('#main').trigger('bosskill');
     }
 
     function checkAnswer() {
         var validWords = [
             'BONE',
             'COOKIE',
+            'COOE',
             'FEATHER',
         ];
         var theWord = '';

@@ -239,6 +239,57 @@ var dialogData =  {
         },
     ],
 
+    meetwitch: [
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'I went deeper and deeper into the woods, deeper and deeper... until I came across an old lady.',
+            sound: "final_forest_boss_01_penny_old_lady.wav",
+            sound_description: null,
+            delay: 5000
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'She was a witch',
+            sound: "final_forest_boss_03_penny_she_was_a_witch.wav",
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            character: 'game',
+            emotion: null,
+            dialog: 'Eee hee hee!<br /><img src="media/images/boss_witch.png">',
+            sound: "final_forest_boss_04_witch_cackle.wav",
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'She was a mean and nasty witch who did terrible things! You know what she did?',
+            sound: "final_forest_boss_05_penny_mean_and_nasty_witch.wav",
+            sound_description: null,
+            delay: 5000
+        },
+        {
+            character: 'game',
+            emotion: null,
+            dialog: 'Here, my pretty! Have an apple!<br /><img src="media/images/boss_witch.png">',
+            sound: "final_forest_boss_06_witch_have_an_apple.wav",
+            sound_description: null,
+            delay: 3000
+        },
+        {
+            character: 'penny',
+            emotion: null,
+            dialog: 'She tried to give me an apple! I hate apples! They\'re all, like, good for you and stuff. If she was a nice old lady, she\'d try to give me cookies.',
+            sound: "final_forest_boss_07_penny_hate_apples.wav",
+            sound_description: null,
+            delay: 8000
+        },
+    ],
+
     meetboy: [
         {
             character: 'penny',

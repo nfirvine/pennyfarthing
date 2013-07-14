@@ -98,15 +98,22 @@
                     </td>
                     <td width="50" valign="top">
                         Mum<br />
+                        <img src="media/images/portrait_mom.png" />
                     </td>
                 </tr>
             </table>
         </div>
     </div>
-
+    <audio id="background_sillyfun.mp3" src="media/audio/background_sillyfun.mp3" preload="auto" />
     <audio id="final_forest_intro_01_Penny_after_the_dog.wav" src="media/audio/final_forest_intro_01_Penny_after_the_dog.wav" preload="auto" />
     <audio id="final_forest_intro_02_penny_lots_of_trees.wav" src="media/audio/final_forest_intro_02_penny_lots_of_trees.wav" preload="auto" />
     <audio id="final_pick_up_letter_penny.wav" src="media/audio/final_pick_up_letter_penny.wav" preload="auto" />
+    <audio preload="auto" src="media/audio/final_forest_boss_01_penny_old_lady.wav" id="final_forest_boss_01_penny_old_lady.wav" />
+    <audio preload="auto" src="media/audio/final_forest_boss_03_penny_she_was_a_witch.wav" id="final_forest_boss_03_penny_she_was_a_witch.wav" />
+    <audio preload="auto" src="media/audio/final_forest_boss_04_witch_cackle.wav" id="final_forest_boss_04_witch_cackle.wav" />
+    <audio preload="auto" src="media/audio/final_forest_boss_05_penny_mean_and_nasty_witch.wav" id="final_forest_boss_05_penny_mean_and_nasty_witch.wav" />
+    <audio preload="auto" src="media/audio/final_forest_boss_06_witch_have_an_apple.wav" id="final_forest_boss_06_witch_have_an_apple.wav" />
+    <audio preload="auto" src="media/audio/final_forest_boss_07_penny_hate_apples.wav" id="final_forest_boss_07_penny_hate_apples.wav" />
 </body>
 <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="dialogdata.js"></script>
@@ -118,7 +125,9 @@
 
     // Main Program
     $(function() {
-
+        var bgMusic = document.getElementById("background_sillyfun.mp3");
+        bgMusic.volume = 0.2;
+        bgMusic.play();
         console.log('dialogData', dialogData);
         $('#use').hide();
         $('#main').on('letter-obtain', function(e, letter){
@@ -158,12 +167,11 @@
     });
 
     function addSpeech(speech, i, scene) {
-        console.log('speech', speech.dialog);
+//        console.log('speech', speech.dialog);
         var dataEl = '<div id="speech-'+speech.character+'" class="speech">'+speech.dialog+'</div>';
 
         $('#'+speech.character).append(dataEl);
         if ( speech.sound != null && speech.sound != "" ) {
-            console.log('xxx', speech.sound);
             document.getElementById(speech.sound).play();
         }
 

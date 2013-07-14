@@ -264,17 +264,17 @@ var dialogData =  {
             character: 'penny',
             emotion: null,
             dialog: 'So after the dog and the stupid boy went away, I got lost in the forest.',
-            sound: null,
+            sound: 'final_forest_intro_01_Penny_after_the_dog.wav',
             sound_description: 'Forest sounds, crickets, even rainforest sounds to make it sound more "dangerous"',
-            delay: 2500
+            delay: 4000
         },
         {
             dialog: 'It was a really deep and dark forest, with lots and lots and LOTS of trees. More trees than were in the whole rest of the world. There were so many trees that even I couldn\'t count them all in a hundred million years!',
             emotion: null,
             character: 'penny',
-            sound: null,
+            sound: 'final_forest_intro_02_penny_lots_of_trees.wav',
             sound_description: null,
-            delay: 2500
+            delay: 12000
         },
     ],
 

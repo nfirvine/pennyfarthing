@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Penny Farthing</title>
-	<style type="text/css">
-		html,body {
-			background-color: #333;
-			color: #fff;
-			font-family: helvetica, arial, sans-serif;
-			margin: 0;
-			padding: 0;
-			font-size: 12pt;
-		}
+    <title>Penny Farthing</title>
+    <style type="text/css">
+        html,body {
+            background-color: #333;
+            color: #fff;
+            font-family: helvetica, arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 12pt;
+        }
 
         #main {
             width: 720px;
         }
-		
-		#canvas {
-			/*position: absolute;*/
-			/*left: 0;*/
-			/*right: 0;*/
-			/*top: 0;*/
-			/*bottom: 0;*/
-			/*margin: auto;*/
-		}
+
+        #canvas {
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*right: 0;*/
+            /*top: 0;*/
+            /*bottom: 0;*/
+            /*margin: auto;*/
+        }
 
         .letter-obtained,
         .letter-selected {
             padding: 30px;
+            background-color: #fff;
+            color: #000;
         }
 
         .letter-obtained:hover,
@@ -46,49 +48,63 @@
         #dialog td {
             vertical-align: top;
         }
-	</style>
+
+        .wrong {
+            background: red;
+        }
+
+        .right {
+            background: green;
+        }
+    </style>
 
 </head>
 <body>
-    <div id="main">
-        <div id="tray"class="tray"></div>
-	    <canvas id="canvas"></canvas>
-        <div id="word">
-            <div id="selection" class="tray">
+<div id="main">
+    <header>
+        <div id="tray" class="tray"></div>
+        <div id="item-container">
+            <div id="item"></div>
+        </div>
+    </header>
+    <canvas id="canvas"></canvas>
+    <div id="word">
+        <div id="selection" class="tray">
 
-            </div>
-            <button name="check" onclick="checkAnswer()">Check</button>
         </div>
-        <div id="inventory">
-        </div>
-        <div id="game"></div>
-        <div id="dialog">
-            <table width='540'>
-                <tr>
-                    <td width="50" valign="top">
-                        Penny<br />
-                        <img src="http://placekitten.com/30/30" />
-                    </td>
-                    <td width="220" valign="top">
-                        <div id="penny"></div>
-                    </td>
-                    <td width="220" valign="top">
-                        <div id="mum"></div>
-                    </td>
-                    <td width="50" valign="top">
-                        Mum<br />
-                        <img src="http://placekitten.com/30/30" />
-                    </td>
-                </tr>
-            </table>
-        </div>
+        <button name="check" onclick="checkAnswer()">Check</button>
     </div>
+    <div id="inventory">
+    </div>
+    <div id="game"></div>
+    <div id="dialog">
+        <table width='540'>
+            <tr>
+                <td width="50" valign="top">
+                    Penny<br />
+                    <img src="http://placekitten.com/30/30" />
+                </td>
+                <td width="220" valign="top">
+                    <div id="penny"></div>
+                </td>
+                <td width="220" valign="top">
+                    <div id="mum"></div>
+                </td>
+                <td width="50" valign="top">
+                    Mum<br />
+                    <img src="http://placekitten.com/30/30" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="dialogdata.js"></script>
 <script>
     var wordEl = $('#word #selection');
     var trayEl = $('#tray');
+    var itemEl = $('#item');
     var dialogsLaunched = {};
 
     // Main Program
@@ -166,13 +182,34 @@
         $(el).remove();
     }
 
+    function useItem() {
+
+    }
+
     function checkAnswer() {
+        var validWords = [
+            'BONE',
+        ];
         var theWord = '';
         $('#selection a').each(function( index ){
             theWord = theWord + $(this).text();
         });
 
-        alert(theWord);
+        var wordFound = false;
+        for(var i = 0; i < validWords.length; i++) {
+            if (theWord == validWords[i]) {
+                wordFound = true;
+                itemEl.html('');
+                itemEl.html('<div id="word-'+theWord+'" class="right">'+theWord+'</div>');
+            }
+        }
+
+        if ( ! wordFound ) {
+            itemEl.html('');
+            itemEl.append('<div id="word-'+theWord+'" class="wrong">'+theWord+'</div>');
+            $('.wrong').fadeOut(4000);
+        }
+
         theWord = '';
     }
 

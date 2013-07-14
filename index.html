@@ -20,6 +20,16 @@
 			/*bottom: 0;*/
 			/*margin: auto;*/
 		}
+
+        .letter-obtained,
+        .letter-selected {
+            padding: 10px;
+        }
+
+        .letter-obtained:hover,
+        .letter-selected:hover {
+            cursor: pointer;
+        }
 	</style>
 
 </head>
@@ -27,28 +37,89 @@
     <div id="main">
         <div id="tray"></div>
 	    <canvas id="canvas"></canvas>
-        <div id="word"></div>
+        <div id="word">
+            <div id="selection">
+
+            </div>
+            <button name="check" onclick="checkAnswer()">Check</button>
+        </div>
+        <div id="inventory">
+        </div>
+        <div id="dialog">
+            <table width='100%'>
+                <tr>
+                    <td>
+                        Penny<br />
+                        <img src="http://placekitten.com/30/30" />
+                    </td>
+                    <td>
+                        <div id="penny">...</div>
+                    </td>
+                    <td>
+                        <div id="mum">...</div>
+                    </td>
+                    <td>
+                        Mum<br />
+                        <img src="http://placekitten.com/30/30" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="jquery-2.0.3.min.js"></script>
 <script>
+    var wordEl = $('#word #selection');
+    var trayEl = $('#tray');
+
     $(function() {
-        var trayEl = $('#tray');
-        var wordEl = $('#word');
+
 
         $('#main').on('letter-obtain', function(e, letter){
             console.log('letter obtaned!!');
             console.log('I got ', letter);
 
-            trayEl.append('<span>'+letter+'</span>');
+            trayEl.append('<span class="letter-obtained">'+letter+'</span>');
+
+            $('span.letter-obtained').each(function( index ){
+                $(this).unbind('click');
+                $(this).on('click', function(){
+                    var letterSet = $(this).text();
+                    wordEl.append('<a class="letter-selected" onClick="removeLetterObtained(this);">'+letterSet+'</span>')
+                    $(this).remove();
+                });
+            });
 
         });
 
-        var letterTray = $('#tray span');
-        letterTray.on('click', function(){
-            wordEl.append('<span></span>')
-        });
     });
+
+    function removeLetterObtained(el) {
+        var letterRemove = $(el).text();
+        trayEl.append('<span class="letter-obtained">'+letterRemove+'</span>');
+
+
+        $('span.letter-obtained').each(function( index ){
+            $(this).unbind('click');
+            $(this).on('click', function(){
+                var letterSet = $(this).text();
+                wordEl.append('<a class="letter-selected" onClick="removeLetterObtained(this);">'+letterSet+'</span>')
+                $(this).remove();
+            });
+        });
+
+        $(el).remove();
+    }
+
+    function checkAnswer() {
+        var theWord = '';
+        $('#selection a').each(function( index ){
+            theWord = theWord + $(this).text();
+        });
+
+        alert(theWord);
+        theWord = '';
+    }
 
 </script>
 <script type="text/javascript" src="lib/impact/impact.js"></script>

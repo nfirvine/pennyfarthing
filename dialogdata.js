@@ -25,9 +25,9 @@ var dialogData =  {
             character: 'penny',
             emotion: null,
             dialog: 'And then I found these little magic letters and things, and I thought, I thought, maybe they\'ll give me an idea of how to get home!',
-            sound: null,
+            sound: 'final_pick_up_letter_penny.wav',
             sound_description: null,
-            delay: 4000
+            delay: 7000
         },
         {
             character: 'game',

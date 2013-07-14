@@ -107,7 +107,7 @@
 
     <audio id="final_forest_intro_01_Penny_after_the_dog.wav" src="media/audio/final_forest_intro_01_Penny_after_the_dog.wav" preload="auto" />
     <audio id="final_forest_intro_02_penny_lots_of_trees.wav" src="media/audio/final_forest_intro_02_penny_lots_of_trees.wav" preload="auto" />
-
+    <audio id="final_pick_up_letter_penny.wav" src="media/audio/final_pick_up_letter_penny.wav" preload="auto" />
 </body>
 <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="dialogdata.js"></script>
@@ -164,7 +164,7 @@
 
         $('#'+speech.character).append(dataEl);
         if ( speech.sound != null && speech.sound != "" ) {
-            console.log('xxx');
+            console.log('xxx', speech.sound);
             document.getElementById(speech.sound).play();
         }
 

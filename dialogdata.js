@@ -295,17 +295,17 @@ var dialogData =  {
             character: 'penny',
             emotion: null,
             dialog: 'And then, after that, there was a boy.',
-            sound: null,
+            sound: "final_boy_01_penny_there_was_a_boy.wav",
             sound_description: null,
-            delay: 2500
+            delay: 2000
         },
         {
             character: 'penny',
             emotion: null,
             dialog: 'But he was dumb',
-            sound: null,
+            sound: 'final_boy_02_penny_but_he_was_dumb.wav',
             sound_description: null,
-            delay: 2500
+            delay: 2000
         },
     ],
 
@@ -345,9 +345,33 @@ var dialogData =  {
             dialog: 'But then I grabbed all the cookies from my pack, and I ate and ate and ate them until I couldn\'t eat any more. Then I said...',
             emotion: null,
             character: 'penny',
-            sound: 'final_forest_intro_02_penny_lots_of_trees.wav',
+            sound: 'final_cookie_on_witch_01_penny_grabbed_all_the_cookies.wav',
             sound_description: null,
-            delay: 12000
+            delay: 6000
+        },
+        {
+            dialog: 'I\'m sorry, Mrs. Witch, but I can\'t have an apple because I\'m full of cookies and I\'m gonna explode if I eat any more.',
+            emotion: null,
+            character: 'penny',
+            sound: 'final_cookie_on_witch_02_penny_mrs_witch.wav',
+            sound_description: null,
+            delay: 6000
+        },
+        {
+            dialog: '... well, nuts',
+            emotion: null,
+            character: 'game',
+            sound: 'final_cookie_on_witch_03_witch_well_nuts.wav',
+            sound_description: null,
+            delay: 2000
+        },
+        {
+            dialog: 'And the witch decided to go away because she couldn\'t give me an apple, but I couldn\'t have taken the apple anyway because you always say not to take food from strangers, so maybe I should have told her that instead.',
+            emotion: null,
+            character: 'penny',
+            sound: 'final_cookie_on_witch_04_penny_witch_went_away.wav',
+            sound_description: null,
+            delay: 9000
         },
     ],
 

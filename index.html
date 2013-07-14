@@ -11,6 +11,10 @@
 			padding: 0;
 			font-size: 12pt;
 		}
+
+        #main {
+            width: 720px;
+        }
 		
 		#canvas {
 			/*position: absolute;*/
@@ -23,42 +27,68 @@
 
         .letter-obtained,
         .letter-selected {
-            padding: 10px;
+            padding: 30px;
+            background-color: #fff;
+            color: #000;
         }
 
         .letter-obtained:hover,
         .letter-selected:hover {
             cursor: pointer;
         }
+
+        #game {
+            text-align: center;
+        }
+
+        .tray {
+            margin: 0 80px;
+        }
+
+        #dialog td {
+            vertical-align: top;
+        }
+
+        .wrong {
+            background: red;
+        }
+
+        .right {
+            background: green;
+        }
 	</style>
 
 </head>
 <body>
     <div id="main">
-        <div id="tray"></div>
+        <header>
+            <div id="tray" class="tray"></div>
+            <div id="item"></div>
+        </header>
 	    <canvas id="canvas"></canvas>
         <div id="word">
-            <div id="selection">
+            <div id="selection" class="tray">
 
             </div>
             <button name="check" onclick="checkAnswer()">Check</button>
         </div>
         <div id="inventory">
         </div>
+        <div id="game"></div>
         <div id="dialog">
-            <table width='100%'>
+            <table width='540'>
                 <tr>
-                    <td>
+                    <td width="50" valign="top">
                         Penny<br />
                         <img src="http://placekitten.com/30/30" />
                     </td>
-                    <td>
-                        <div id="penny">...</div>
+                    <td width="220" valign="top">
+                        <div id="penny"></div>
                     </td>
-                    <td>
-                        <div id="mum">...</div>
+                    <td width="220" valign="top">
+                        <div id="mum"></div>
                     </td>
-                    <td>
+                    <td width="50" valign="top">
                         Mum<br />
                         <img src="http://placekitten.com/30/30" />
                     </td>
@@ -68,16 +98,20 @@
     </div>
 </body>
 <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="dialogdata.js"></script>
 <script>
     var wordEl = $('#word #selection');
     var trayEl = $('#tray');
+    var itemEl = $('#item');
+    var dialogsLaunched = {};
 
+    // Main Program
     $(function() {
 
-
+        console.log('dialogData', dialogData);
         $('#main').on('letter-obtain', function(e, letter){
-            console.log('letter obtaned!!');
-            console.log('I got ', letter);
+
+            $('#main').trigger('dialog', ['firstpickup']);
 
             trayEl.append('<span class="letter-obtained">'+letter+'</span>');
 
@@ -92,7 +126,42 @@
 
         });
 
+        $('#main').on('dialog', function(e, dialogId){
+            if ( ! dialogData.hasOwnProperty(dialogId) || dialogsLaunched.hasOwnProperty(dialogId) ) {
+                return;
+            }
+
+            console.log('dialog', dialogId, dialogData[dialogId]);
+
+            dialogsLaunched[dialogId] = true;
+
+            var scene = dialogData[dialogId];
+
+            var i = 0;
+            var speech = scene[i];
+            addSpeech(speech, i, scene);
+
+        });
+
     });
+
+    function addSpeech(speech, i, scene) {
+        console.log('speech', speech.dialog);
+        var dataEl = '<div id="speech-'+speech.character+'" class="speech">'+speech.dialog+'</div>';
+
+        console.log(i, speech.character);
+        $('#'+speech.character).append(dataEl);
+        $('#speech-'+speech.character).fadeOut(speech.delay, function(){
+            $('#'+speech.character).html('');
+            i++;
+            if (i >= scene.length) {
+                return;
+            }
+
+            speech = scene[i];
+            addSpeech(speech, i, scene);
+        });
+    }
 
     function removeLetterObtained(el) {
         var letterRemove = $(el).text();
@@ -112,12 +181,29 @@
     }
 
     function checkAnswer() {
+        var validWords = [
+            'BONE',
+        ];
         var theWord = '';
         $('#selection a').each(function( index ){
             theWord = theWord + $(this).text();
         });
 
-        alert(theWord);
+        var wordFound = false;
+        for(var i = 0; i < validWords.length; i++) {
+            if (theWord == validWords[i]) {
+                wordFound = true;
+                itemEl.html('');
+                itemEl.html('<div id="word-'+theWord+'" class="right">'+theWord+'</div>');
+            } 
+        }
+
+        if ( ! wordFound ) {
+            itemEl.html('');
+            itemEl.append('<div id="word-'+theWord+'" class="wrong">'+theWord+'</div>');
+            $('.wrong').fadeOut(4000);
+        }
+
         theWord = '';
     }
 

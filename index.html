@@ -43,6 +43,7 @@
 
         .tray {
             margin: 0 80px;
+            height: 50px;
         }
 
         #dialog td {
@@ -65,6 +66,7 @@
         <div id="tray" class="tray"></div>
         <div id="item-container">
             <div id="item"></div>
+            <div id="use"><button name="useitem" onclick="useItem()">Use Item</button></div>
         </div>
     </header>
     <canvas id="canvas"></canvas>
@@ -111,6 +113,7 @@
     $(function() {
 
         console.log('dialogData', dialogData);
+        $('#use').hide();
         $('#main').on('letter-obtain', function(e, letter){
 
             $('#main').trigger('dialog', ['firstpickup']);
@@ -183,12 +186,15 @@
     }
 
     function useItem() {
-
+        $('#use').hide();
+        itemEl.html('');
     }
 
     function checkAnswer() {
         var validWords = [
             'BONE',
+            'COOKIE',
+            'FEATHER',
         ];
         var theWord = '';
         $('#selection a').each(function( index ){
@@ -201,6 +207,8 @@
                 wordFound = true;
                 itemEl.html('');
                 itemEl.html('<div id="word-'+theWord+'" class="right">'+theWord+'</div>');
+                $('#use').show();
+                break;
             }
         }
 

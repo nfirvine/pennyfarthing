@@ -37,6 +37,10 @@
             cursor: pointer;
         }
 
+        .speech {
+            font-size: 14px;
+        }
+
         #game {
             text-align: center;
         }
@@ -61,45 +65,49 @@
 
 </head>
 <body>
-<div id="main">
-    <header>
-        <div id="tray" class="tray"></div>
-        <div id="item-container">
-            <div id="item"></div>
-            <div id="use"><button name="useitem" onclick="useItem()">Use Item</button></div>
-        </div>
-    </header>
-    <canvas id="canvas"></canvas>
-    <div id="word">
-        <div id="selection" class="tray">
+    <div id="main">
+        <header>
+            <div id="tray" class="tray"></div>
+            <div id="item-container">
+                <div id="item"></div>
+                <div id="use"><button name="useitem" onclick="useItem()">Use Item</button></div>
+            </div>
+        </header>
+        <canvas id="canvas"></canvas>
+        <div id="word">
+            <div id="selection" class="tray">
 
+            </div>
+            <button name="check" onclick="checkAnswer()">Check</button>
         </div>
-        <button name="check" onclick="checkAnswer()">Check</button>
+        <div id="inventory">
+        </div>
+        <div id="game"></div>
+        <div id="dialog">
+            <table width='540'>
+                <tr>
+                    <td width="50" valign="top">
+                        Penny<br />
+                        <img src="http://placekitten.com/30/30" />
+                    </td>
+                    <td width="220" valign="top">
+                        <div id="penny"></div>
+                    </td>
+                    <td width="220" valign="top">
+                        <div id="mum"></div>
+                    </td>
+                    <td width="50" valign="top">
+                        Mum<br />
+                        <img src="http://placekitten.com/30/30" />
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div id="inventory">
-    </div>
-    <div id="game"></div>
-    <div id="dialog">
-        <table width='540'>
-            <tr>
-                <td width="50" valign="top">
-                    Penny<br />
-                    <img src="http://placekitten.com/30/30" />
-                </td>
-                <td width="220" valign="top">
-                    <div id="penny"></div>
-                </td>
-                <td width="220" valign="top">
-                    <div id="mum"></div>
-                </td>
-                <td width="50" valign="top">
-                    Mum<br />
-                    <img src="http://placekitten.com/30/30" />
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
+
+    <audio id="final_forest_intro_01_Penny_after_the_dog.wav" src="media/audio/final_forest_intro_01_Penny_after_the_dog.wav" preload="auto" />
+    <audio id="final_forest_intro_02_penny_lots_of_trees.wav" src="media/audio/final_forest_intro_02_penny_lots_of_trees.wav" preload="auto" />
+    <audio id="final_pick_up_letter_penny.wav" src="media/audio/final_pick_up_letter_penny.wav" preload="auto" />
 </body>
 <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="dialogdata.js"></script>
@@ -154,9 +162,14 @@
         console.log('speech', speech.dialog);
         var dataEl = '<div id="speech-'+speech.character+'" class="speech">'+speech.dialog+'</div>';
 
-        console.log(i, speech.character);
         $('#'+speech.character).append(dataEl);
-        $('#speech-'+speech.character).fadeOut(speech.delay, function(){
+        if ( speech.sound != null && speech.sound != "" ) {
+            console.log('xxx', speech.sound);
+            document.getElementById(speech.sound).play();
+        }
+
+        var offset = 1000;
+        $('#speech-'+speech.character).fadeOut(speech.delay + offset, function(){
             $('#'+speech.character).html('');
             i++;
             if (i >= scene.length) {
@@ -195,7 +208,6 @@
         var validWords = [
             'BONE',
             'COOKIE',
-            'COOE',
             'FEATHER',
         ];
         var theWord = '';

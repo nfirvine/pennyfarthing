@@ -114,6 +114,12 @@
     <audio preload="auto" src="media/audio/final_forest_boss_05_penny_mean_and_nasty_witch.wav" id="final_forest_boss_05_penny_mean_and_nasty_witch.wav" />
     <audio preload="auto" src="media/audio/final_forest_boss_06_witch_have_an_apple.wav" id="final_forest_boss_06_witch_have_an_apple.wav" />
     <audio preload="auto" src="media/audio/final_forest_boss_07_penny_hate_apples.wav" id="final_forest_boss_07_penny_hate_apples.wav" />
+    <audio preload="auto" src="media/audio/final_cookie_on_witch_01_penny_grabbed_all_the_cookies.wav" id="final_cookie_on_witch_01_penny_grabbed_all_the_cookies.wav" />
+    <audio preload="auto" src="media/audio/final_cookie_on_witch_02_penny_mrs_witch.wav" id="final_cookie_on_witch_02_penny_mrs_witch.wav" />
+    <audio preload="auto" src="media/audio/final_cookie_on_witch_03_witch_well_nuts.wav" id="final_cookie_on_witch_03_witch_well_nuts.wav" />
+    <audio preload="auto" src="media/audio/final_cookie_on_witch_04_penny_witch_went_away.wav" id="final_cookie_on_witch_04_penny_witch_went_away.wav" />
+    <audio preload="auto" src="media/audio/final_boy_01_penny_there_was_a_boy.wav" id="final_boy_01_penny_there_was_a_boy.wav" />
+    <audio preload="auto" src="media/audio/final_boy_02_penny_but_he_was_dumb.wav" id="final_boy_02_penny_but_he_was_dumb.wav" />
 </body>
 <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="dialogdata.js"></script>
@@ -128,7 +134,7 @@
         var bgMusic = document.getElementById("background_sillyfun.mp3");
         bgMusic.volume = 0.2;
         bgMusic.play();
-        console.log('dialogData', dialogData);
+
         $('#use').hide();
         $('#main').on('letter-obtain', function(e, letter){
 
@@ -152,7 +158,7 @@
                 return;
             }
 
-            console.log('dialog', dialogId, dialogData[dialogId]);
+            // console.log('dialog', dialogId, dialogData[dialogId]);
 
             dialogsLaunched[dialogId] = true;
 

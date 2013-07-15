@@ -358,7 +358,7 @@ var dialogData =  {
             delay: 6000
         },
         {
-            dialog: '... well, nuts',
+            dialog: '... well, nuts<br /><img src="media/images/boss_witch.png">',
             emotion: null,
             character: 'game',
             sound: 'final_cookie_on_witch_03_witch_well_nuts.wav',

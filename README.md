@@ -19,6 +19,11 @@ python server.py
 
 Then visit http://localhost:8080 in your browser for maximum funness!
 
+Source
+------
+
+https://github.com/nfirvine/pennyfarthing
+
 Credits
 -------
 
